@@ -1,7 +1,7 @@
 [project]
 name = "edge-detector"
 version = "0.0.1"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [{ name = "Alexander Kamynin", email = "kamyninsasa@gmail.com" }]
 readme = "README.md"
 
@@ -18,8 +18,18 @@ dependencies = [
     "ipykernel",
 ]
 
+[tool.uv]
+environments = [
+    "sys_platform == 'win32'",
+    "sys_platform == 'linux'",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[build-system]
+requires = ["setuptools>=68,<81"]
+build-backend = "setuptools.build_meta"
